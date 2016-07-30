@@ -14,4 +14,4 @@ gem 'middleman-livereload'
 gem 'middleman-compass', '>= 4.0.0'
 
 # Deploy to Github Pages:
-gem 'middleman-deploy'
+gem 'middleman-deploy', github: 'middleman-contrib/middleman-deploy', branch: 'master'
