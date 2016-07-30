@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title><%= current_page.data.title || "Colin McCloskey" %></title>
+
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+    <%= stylesheet_link_tag :site %>
+    <%= javascript_include_tag :all %>
+  </head>
+
+  <body class="<%= page_classes %>">
+
+    <section id="header">
+      <div id="logo"><a href="/"><%= image_tag "colin_color.jpg" %></a></div>
+      <h1>This is Colin McCloskey</h1>
+      <p>Bearded computery nerd person. Runs Awexome Labs. Started Emmerge. Is WOSoMP. Co-creator of Bennett.</p>
+    </section>
+
+    <%= yield_content :posthead %>
+
+    <section id="body">
+      <%= yield %>
+    </section>
+
+    <%= yield_content :postbody %>
+    
+    <section id="footer">
+      <h2>Colin McCloskey</h2>
+      Bearded computery nerd person.
+
+      <ul id="nav">
+        <li><%=link_to "About", "/about"-%></li>
+        <li><%=link_to "Résumé", "/resume"-%></li>
+      </ul>
+
+      <ul id="elsewhere">
+        <li><a href="http://github.com/mccolin"><i class="fa fa-lg fa-fw fa-github"></i></a></li>
+        <li><a href="http://instagram.com/mccolin"><i class="fa fa-lg fa-fw fa-instagram"></i></a></li>
+        <li><a href="http://twitter.com/mccolin"><i class="fa fa-lg fa-fw fa-twitter"></i></a></li>
+        <li><a href="http://facebook.com/colinmccloskey"><i class="fa fa-lg fa-fw fa-facebook-square"></i></a></li>
+        <li><a href="http://www.linkedin.com/in/mccolin"><i class="fa fa-lg fa-fw fa-linkedin"></i></a></li>
+      </ul>
+    </section>
+
+  </body>
+</html>

@@ -1,0 +1,275 @@
+@charset "utf-8";
+@import "normalize";
+
+html#root {
+  background: url(/images/IMG_2850.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+
+  body {
+    background: none;
+    height: 100%;
+  }
+
+  #body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    min-width: 100%;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+
+    #intro {
+      position: absolute;
+      left: 2em;
+      bottom: 2em;
+      max-width: 70%;
+    }
+  }
+
+  h1 {
+    color: #FFF;
+    font-size: 2.25em;
+    font-weight: lighter;
+    margin-bottom: 0;
+    text-shadow: 0 0 6px rgba(0,0,0,0.7);
+  }
+
+
+  p {
+    color: #EEE;
+    font-size: 1.0em;
+  }
+
+  a.home-button {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    color: #666;
+    display: inline-block;
+    font-size: 1.25em;
+    font-weight: lighter;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+  }
+
+  a.home-button:hover {
+    background: #EEE;
+    border-color: #000;
+    color: #000;
+  }
+}
+
+html#root.image-1 { background-image: url(/images/IMG_2850.jpg); }
+html#root.image-2 { background-image: url(/images/IMG_2100.jpg); }
+html#root.image-3 { background-image: url(/images/IMG_3420.jpg); }
+html#root.image-4 { background-image: url(/images/IMG_4280.jpg); }
+
+body {
+  background: #EEE;
+  text-align: center;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.1em;
+}
+
+#body {
+  a {
+    box-shadow: inset 0 -5px 0 #C0E6F7;
+    color: #006;
+    text-decoration: none;
+  }
+  a:hover {
+    box-shadow: inset 0 -5px 0 #89A4E1;
+    color: #00A;
+  }
+}
+
+#header {
+  background: #036;
+  box-shadow: 0 1px 2em rgba(0,0,0,0.8);
+  color: #EEE;
+  margin: 0 0;
+  padding: 2em 0 5em;
+  position: relative;
+  width: 100%;
+
+  #logo {
+    position: absolute;
+    bottom: -5em;
+    left: calc(50% - 5em);
+
+    img {
+      border-radius: 50%;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+      width: 10em;
+    }
+  }
+}
+
+#body {
+  color: #333;
+  line-height: 1.5;
+  margin: 0em auto;
+  max-width: 50em;
+  padding: 1em 1em 4em;
+  text-align: left;
+}
+
+#footer {
+  background: #036;
+  box-shadow: 0 -1px 2em rgba(0,0,0,0.8);
+  color: #EEE;
+  margin: 0;
+  padding: 2em 8em;
+
+  ul#nav {
+    list-style: none;
+    margin: 1em 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+
+      a {
+        color: #EEE;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #FFF;
+        text-decoration: underline;
+      }
+    }
+    li::after {
+      content: " • "
+    }
+    li:last-child::after {
+      content: "";
+    }
+  }
+}
+
+ul#elsewhere {
+  list-style: none;
+  margin: 1em 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    vertical-align: middle;
+
+    a {
+      box-shadow: none;
+      color: #DDD;
+      text-decoration: none;
+    }
+    a:hover {
+      box-shadow: none;
+      color: #FFF;
+      text-decoration: none;
+    }
+  }
+}
+
+section h1 {
+  color: #333;
+  font-size: 1.75em;
+  font-weight: lighter;
+  margin: 2em 0 0.5em;
+}
+
+p.intro {
+  font-style: italic;
+  border-top: 1px dotted #333;
+  border-bottom: 1px dotted #333;
+  padding: 1em 0;
+  margin: 2em 2em 2em;
+}
+
+
+// RESUME
+
+section.experience {
+
+  display: table-row;
+
+  h1 {
+    color: #111;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1em 0 0;
+  }
+  h2 {
+    color: #333;
+    font-size: 1.25em;
+    margin: 0 0 0.5em
+  }
+  summary {
+    display: table-cell;
+    min-width: 15em;
+
+    .location {
+      display: block;
+    }
+    time {
+      display: block;
+    }
+  }
+  ul {
+    display: table-cell;
+    margin: 0;
+    padding: 0 2em;
+    min-width: 30em;
+    line-height: 1.5em;
+  }
+
+  li.tag {
+    font-style: italic;
+  }
+
+}
+
+// SKILLS
+
+span.skill {
+  background: #CCC;
+  border: 1px solid #999;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0.2em;
+  padding: 0.5em;
+}
+
+span.skill.technical { background: #9EE; }
+span.skill.lang { background: #E99; }
+span.skill.platform { background: #EE9; }
+span.skill.data { background: #BBF; }
+span.skill.env { background: #FCC; }
+span.skill.soft { background: #AEA; }
+
+
+#header h1 {
+  color: #EEE;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 3em;
+  font-weight: 100;
+  margin: 1em 0 0;
+}
+
+#header h2 {
+  font-size: 1.75em;
+  font-weight: lighter;
+  margin: 2em 0 0.5em;
+}
+
+// HOME
+
+body.index #body {
+  padding: 8em;
+  text-align: center;
+}
+
