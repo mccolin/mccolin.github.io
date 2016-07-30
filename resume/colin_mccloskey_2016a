@@ -1,0 +1,81 @@
+<h1 id="colin-mccloskey">Colin McCloskey</h1>
+
+<p>Philadelphia, PA<br />
+jobs2016@mccolin.com</p>
+
+<h2 id="profile">Profile</h2>
+
+<p>Productive full-stack software engineer with significant experience working directly with customers and leading teams in the enterprise and startup worlds.</p>
+
+<h2 id="experience">Experience</h2>
+
+<h3 id="emmerge---senior-architect">Emmerge - Senior Architect</h3>
+<p>Remote/San Francisco, CA<br />
+4/2014 – 8/2016
+- Founding member of startup team building email collaboration tools for project, team, and task management.
+- Led team in design of high capacity and high availability email processing system, and overall architecture design.
+- Built system interfacing with external mail systems, capturing 7.5M+ emails across thousands of accounts, and performing intelligence functions in content extraction, machine learning, natural language processing, deep categorization, and storage optimization in real-time.
+- Developed patented storage mechanism for shared email that enabled deep sharing and collaboration with principled security.
+- Major Technologies: Meteor, node.js, JavaScript, MongoDB, Redis</p>
+
+<h3 id="awexome-labs---principal">Awexome Labs - Principal</h3>
+<p>Philadelphia, PA<br />
+6/2010 - Now
+- Provided expert consultation to clients in varied industries as developer of service APIs, “small data” administration systems, and full-stack web applications.
+- Led projects with six figure budgets, managing technology efforts as well as internal and external staff.
+- Major Technologies: Ruby on Rails, Heroku, AWS, Database systems</p>
+
+<h3 id="involver---senior-software-engineer">Involver - Senior Software Engineer</h3>
+<p>San Francisco, CA<br />
+3/2010 - 6/2010
+- Lead engineer in custom services division, working directly with clients to specify project requirements and develop marketing products tightly integrated with social media platforms.
+- Developed campaigns for Fortune 500 companies including Facebook, DIRECTV and scaled products to over 20M active users.
+- Major Technologies: Ruby on Rails, Java VM, social integrations</p>
+
+<h3 id="context-optional---application-genius">Context Optional - Application Genius</h3>
+<p>San Francisco, CA<br />
+2/2008 - 2/2010
+- Employee #2 at startup providing social media consultation and software development to Fortune 500 companies.
+- Directly responsible for product lifecycle of 25+ products on Facebook, Twitter, and Google social media platforms with clients including Microsoft, McDonald’s, Electronic Arts, Fandango, Zagat, NBC Universal, and Live Nation; user base peaking at 10M active.
+- Acted in engineering, product design, and project management capacities for all projects; mentored onboarding staff; helped grow team to 50+ members in two years.
+- Major Technologies: Ruby on Rails, JavaScript, MySQL, social integrations</p>
+
+<h3 id="cnet-networks---software-engineer-platform">CNET Networks - Software Engineer, Platform</h3>
+<p>Bridgewater, NJ<br />
+6/2006 - 1/2008, Summer 2005
+- Major contributor to internal build and product delivery system used by all engineering staff in company; maintainer of customized stack software including Apache, Resin, MySQL, Solr, and proprietary web products.
+- Supported team efforts in development of major APIs and products used in all editorial verticals, including search engines and real-time data layers.
+- Hired full-time following successful 2005 summer internship as team member.
+- Major technologies: MySQL, Linux, Ruby, shell, networking, platforms</p>
+
+<h3 id="university-of-delaware---residence-life">University of Delaware - Residence Life</h3>
+<p>Newark, DE<br />
+8/2003 - 5/2006
+- As a Hall Director (2005-06): Supervised staff of six Resident Assistants, advised student government serving 600 students, and oversaw academic programming and physical operations in two residence halls housing 220 students.
+- Resident Assistant (2003-05): On a staff of nine, oversaw floor of 42 resident students and developed academic and cultural programming for residential complex serving 350 students; held leadership role in technology.</p>
+
+<h2 id="skills">Skills</h2>
+<ul>
+  <li>Technical Areas: Architecture, Data Design, Full-stack web development, API design, API development, Optimization, Scale</li>
+  <li>Languages: Ruby, JavaScript (experience in many others, but focused here)</li>
+  <li>Platforms: Rails, node.js, Meteor</li>
+  <li>Data: MySQL, Postgres, MongoDB, Redis, Cassandra, Elastic Search, Redis</li>
+  <li>Environments: AWS, Linux, Heroku, Docker, macOS, nginx</li>
+  <li>Non-technical: Small Team Leadership, Client Management, Project Management, Hiring, Roadmap, Remote work</li>
+</ul>
+
+<p><em>Experience in many other disciplines, but efforts currently focused in these areas.</em></p>
+
+<h2 id="education">Education</h2>
+
+<h3 id="med-technology---university-of-delaware">M.Ed Technology - University of Delaware</h3>
+<p>2006
+- Coursework: Adaptive Interfaces for Learning Needs
+- Partially complete; postponed to take employment at CNET Networks</p>
+
+<h3 id="bs-computer-science---university-of-delaware">B.S. Computer Science - University of Delaware</h3>
+<p>2005
+- Concentration: Data-backed Web Systems
+- Minor: Management Information Systems, Business
+- Member: Honors Program</p>
+
