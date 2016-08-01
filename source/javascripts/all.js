@@ -41,8 +41,8 @@ function assignRootClassForBgImage() {
  **/
 function fillRandSpans() {
   var rands = document.querySelectorAll('[rel=rand]');
-  rands.forEach( function(rand) {
-    var idx = Math.floor(Math.random() * rand.children.length);
-    rand.innerHTML = rand.children[idx].innerHTML;
-  });
+  for (var i=0; i < rands.length; i++) {
+    var idx = Math.floor(Math.random() * rands[i].children.length);
+    rands[i].innerHTML = rands[i].children[idx].innerHTML;
+  }
 }
