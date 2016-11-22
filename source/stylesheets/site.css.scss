@@ -2,7 +2,7 @@
 @import "normalize";
 
 html#root {
-  background: url(/images/IMG_2850.jpg) no-repeat center center fixed;
+  background: url(/images/IMG_FALL.jpg) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
 
@@ -67,6 +67,8 @@ html#root.image-1 { background-image: url(/images/IMG_2850.jpg); }
 html#root.image-2 { background-image: url(/images/IMG_2100.jpg); }
 html#root.image-3 { background-image: url(/images/IMG_3420.jpg); }
 html#root.image-4 { background-image: url(/images/IMG_4280.jpg); }
+html#root.image-5 { background-image: url(/images/IMG_FALL.jpg); }
+html#root.image-6 { background-image: url(/images/IMG_4768.JPG); }
 
 body {
   background: #EEE;

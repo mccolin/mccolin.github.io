@@ -27,7 +27,7 @@ ready( function() {
 function assignRootClassForBgImage() {
   var rootHtml = document.querySelector('html#root');
   if (rootHtml) {
-    var className = "image-"+(Math.floor(Math.random() * 4) + 1);
+    var className = "image-"+(Math.floor(Math.random() * 6) + 1);
     if (rootHtml.classList)
       rootHtml.classList.add(className);
     else
