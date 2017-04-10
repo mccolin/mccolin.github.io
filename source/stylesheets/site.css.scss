@@ -45,7 +45,7 @@ html#root {
   }
 
   a.home-button {
-    background: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.85);
     border: 1px solid #CCC;
     border-radius: 5px;
     color: #666;
@@ -68,7 +68,8 @@ html#root.image-2 { background-image: url(/images/IMG_2100.jpg); }
 html#root.image-3 { background-image: url(/images/IMG_3420.jpg); }
 html#root.image-4 { background-image: url(/images/IMG_4280.jpg); }
 html#root.image-5 { background-image: url(/images/IMG_FALL.jpg); }
-html#root.image-6 { background-image: url(/images/IMG_4768.JPG); }
+html#root.image-6 { background-image: url(/images/IMG_FALL.jpg); }
+// html#root.image-6 { background-image: url(/images/IMG_4768.JPG); }
 
 body {
   background: #EEE;
@@ -273,4 +274,3 @@ body.index #body {
   padding: 8em;
   text-align: center;
 }
-
