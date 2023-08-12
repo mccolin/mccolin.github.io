@@ -4,18 +4,10 @@ layout: front_door
 ---
 
 <div id="intro">
-  <h1>This is Colin McCloskey</h1>
-  <p>Bearded computery nerd person. Philadelphian. Co-creator of Bennett &amp; Lila.</p>
+  <%= partial "titles" %>
 
   <%= link_to "About", "/about", class: 'home-button' %>
   <%= link_to "Résumé", "/resume", class: 'home-button' %>
 
-  <ul id="elsewhere">
-    <li><a href="http://github.com/mccolin"><i class="fa fa-lg fa-fw fa-github"></i></a></li>
-    <li><a href="http://instagram.com/mccolin"><i class="fa fa-lg fa-fw fa-instagram"></i></a></li>
-    <li><a href="http://twitter.com/mccolin"><i class="fa fa-lg fa-fw fa-twitter"></i></a></li>
-    <li><a href="http://facebook.com/colinmccloskey"><i class="fa fa-lg fa-fw fa-facebook-square"></i></a></li>
-    <li><a href="http://www.linkedin.com/in/mccolin"><i class="fa fa-lg fa-fw fa-linkedin"></i></a></li>
-    <li><a href="https://angel.co/mccolin"><i class="fa fa-lg fa-fw fa-angellist"></i></a></li>
-  </ul>
+  <%= partial "elsewhere" %>
 </div>
