@@ -2,7 +2,7 @@
 @import "normalize";
 
 html#root {
-  background: url(/images/IMG_FALL.jpg) no-repeat center center fixed;
+  background: url(/images/bg_colin_cows.jpg) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
 
@@ -63,13 +63,15 @@ html#root {
   }
 }
 
-html#root.image-1 { background-image: url(/images/IMG_2850.jpg); }
-html#root.image-2 { background-image: url(/images/IMG_2100.jpg); }
-html#root.image-3 { background-image: url(/images/IMG_3420.jpg); }
-html#root.image-4 { background-image: url(/images/IMG_4280.jpg); }
-html#root.image-5 { background-image: url(/images/IMG_FALL.jpg); }
-html#root.image-6 { background-image: url(/images/IMG_FALL.jpg); }
-// html#root.image-6 { background-image: url(/images/IMG_4768.JPG); }
+html#root.image-1 { background-image: url(/images/bg_colin_bennett_cookie.jpg); }
+html#root.image-2 { background-image: url(/images/bg_bennett_icee.jpg); }
+html#root.image-3 { background-image: url(/images/bg_colin_cows.jpg); }
+html#root.image-4 { background-image: url(/images/bg_colin_boat.jpg); }
+html#root.image-5 { background-image: url(/images/bg_family_fall.jpg); }
+html#root.image-6 { background-image: url(/images/bg_colin_lila_silly.jpg); }
+html#root.image-7 { background-image: url(/images/bg_colin_bennett_sun.jpg); }
+html#root.image-8 { background-image: url(/images/bg_colin_liz_wedding.jpg); }
+html#root.image-9 { background-image: url(/images/bg_colin_gates.jpg); }
 
 body {
   background: #EEE;
