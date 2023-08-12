@@ -45,21 +45,17 @@ html#root {
   }
 
   a.home-button {
-    background: rgba(255,255,255,0.85);
-    border: 1px solid #CCC;
-    border-radius: 5px;
-    color: #666;
+    color: #EEE;
     display: inline-block;
     font-size: 1.25em;
     font-weight: lighter;
     padding: 0.5em 0.5em;
-    text-decoration: none;
+    text-decoration: none !important;
   }
 
   a.home-button:hover {
-    background: #EEE;
-    border-color: #000;
-    color: #000;
+    background: rgba(50,50,50,0.6);
+    color: #FFF;
   }
 }
 
