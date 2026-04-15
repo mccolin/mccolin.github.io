@@ -11,7 +11,7 @@ gem 'net-ftp', '0.2.0'
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 
 # Middleman Gems
-gem 'middleman', '4.5.0'
+gem 'middleman', '~> 4.6'
 gem 'middleman-livereload', '3.4.7'
 gem 'middleman-compass','4.0.1'
 
