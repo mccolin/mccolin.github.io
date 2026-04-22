@@ -1,5 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const rawImages = import.meta.glob<string>('../assets/bgphotos/*.jpg', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+});
+const bgUrls = Object.values(rawImages);
 ---
 
 <BaseLayout description="Personal site of Colin McCloskey.">
@@ -18,6 +25,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
   </div>
 </BaseLayout>
+
+<script is:inline define:vars={{ bgUrls }}>
+  const url = bgUrls[Math.floor(Math.random() * bgUrls.length)];
+  document.body.style.backgroundImage = `url('${url}')`;
+  document.body.classList.add('has-bg-photo');
+</script>
+
+<style is:global>
+  body.has-bg-photo {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  body.has-bg-photo::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(249, 247, 244, 0.68);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  body.has-bg-photo header,
+  body.has-bg-photo main,
+  body.has-bg-photo footer {
+    position: relative;
+    z-index: 1;
+  }
+</style>
 
 <style>
   .intro {
