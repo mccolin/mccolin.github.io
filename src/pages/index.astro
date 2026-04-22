@@ -30,6 +30,28 @@ const bgUrls = Object.values(rawImages);
   const url = bgUrls[Math.floor(Math.random() * bgUrls.length)];
   document.body.style.backgroundImage = `url('${url}')`;
   document.body.classList.add('has-bg-photo');
+
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 50;
+    canvas.height = 50;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, 50, 50);
+    const data = ctx.getImageData(0, 0, 50, 50).data;
+    let r = 0, g = 0, b = 0;
+    const pixels = data.length / 4;
+    for (let i = 0; i < data.length; i += 4) {
+      r += data[i];
+      g += data[i + 1];
+      b += data[i + 2];
+    }
+    r = Math.round((r / pixels) * 0.22);
+    g = Math.round((g / pixels) * 0.22);
+    b = Math.round((b / pixels) * 0.22);
+    document.documentElement.style.setProperty('--scrim-color', `rgba(${r},${g},${b},0.82)`);
+  };
+  img.src = url;
 </script>
 
 <style is:global>
@@ -43,7 +65,8 @@ const bgUrls = Object.values(rawImages);
     content: '';
     position: fixed;
     inset: 0;
-    background: rgba(249, 247, 244, 0.68);
+    background: var(--scrim-color, rgba(12, 10, 8, 0.82));
+    transition: background 0.4s ease;
     z-index: 0;
     pointer-events: none;
   }
