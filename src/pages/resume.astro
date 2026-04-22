@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Resume" description="Professional history of Colin McCloskey.">
+  <div class="page-wrap">
+    <h1>Resume</h1>
+
+    <section class="resume-section">
+      <h2>Experience</h2>
+
+      <div class="role">
+        <div class="role-header">
+          <strong>Senior Software Engineer</strong>
+          <span class="role-meta">Company Name &middot; 20XX–Present</span>
+        </div>
+        <p>
+          Brief description of the role and what you worked on. Keep it honest
+          and specific. Delete this placeholder and fill in the real thing.
+        </p>
+      </div>
+
+      <div class="role">
+        <div class="role-header">
+          <strong>Software Engineer</strong>
+          <span class="role-meta">Previous Company &middot; 20XX–20XX</span>
+        </div>
+        <p>
+          Another role description goes here. Focus on what you actually built
+          and the impact it had, not on buzzwords.
+        </p>
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>Education</h2>
+      <div class="role">
+        <div class="role-header">
+          <strong>B.S. Computer Science</strong>
+          <span class="role-meta">University Name &middot; 20XX</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>Skills</h2>
+      <p>
+        A short, honest list of what you're actually good at — not a keyword
+        dump. Languages, tools, practices that represent genuine depth.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .resume-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .resume-section h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .role {
+    margin-bottom: 1.5rem;
+  }
+
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .role-meta {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .role p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+</style>

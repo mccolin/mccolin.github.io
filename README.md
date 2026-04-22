@@ -1,46 +1,74 @@
-# Astro Starter Kit: Basics
+# mccolin.com
+
+Personal site of Colin McCloskey. Minimal, text-forward, occasionally updated.
+
+Built with [Astro](https://astro.build), hosted on [GitHub Pages](https://pages.github.com), deployed automatically on push to `main`.
+
+---
+
+## Project structure
+
+```
+/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # GitHub Actions → GitHub Pages
+├── public/
+│   ├── CNAME                   # Custom domain: mccolin.com
+│   └── favicon.svg
+├── src/
+│   ├── content/
+│   │   └── blog/               # Blog posts as .md or .mdx files
+│   ├── content.config.ts       # Content Collections schema
+│   ├── layouts/
+│   │   ├── BaseLayout.astro    # HTML shell, nav, global styles
+│   │   └── PostLayout.astro    # Wrapper for individual blog posts
+│   ├── pages/
+│   │   ├── index.astro         # Home
+│   │   ├── about.astro         # About
+│   │   ├── resume.astro        # Resume
+│   │   └── blog/
+│   │       ├── index.astro     # Post listing
+│   │       └── [...slug].astro # Individual post pages
+│   ├── components/             # Reusable .astro components
+│   └── styles/
+│       └── global.css          # CSS custom properties and base styles
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
+```
+
+## Local development
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev      # dev server at localhost:4321
+npm run build    # production build to dist/
+npm run preview  # preview the production build locally
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Writing a blog post
 
-## 🚀 Project Structure
+Add a `.md` or `.mdx` file to `src/content/blog/`. Use a slug as the filename — it becomes the URL path:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```
+src/content/blog/2025-05-something-i-noticed.md
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Required frontmatter:
 
-## 🧞 Commands
+```yaml
+---
+title: "Something I noticed"
+description: "Optional but useful for SEO and the post listing."
+pubDate: 2025-05-12
+draft: true          # Remove or set false to publish
+tags: ["optional"]
+---
+```
 
-All commands are run from the root of the project, from a terminal:
+Posts with `draft: true` are visible in local dev but excluded from production builds.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Deployment
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Pushing to `main` triggers the GitHub Actions workflow in `.github/workflows/deploy.yml`, which builds the site and deploys it to GitHub Pages. The `public/CNAME` file preserves the `mccolin.com` custom domain across deploys.
