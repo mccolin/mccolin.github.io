@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import avatar from '../assets/profile/colin_emoji.png';
+
 interface Props {
   title?: string;
   description?: string;
@@ -40,7 +43,10 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
   <body>
     <header>
       <div class="page-wrap header-inner">
-        <a href="/" class="site-name">Colin McCloskey</a>
+        <a href="/" class="site-name">
+          <Image src={avatar} alt="" width={28} height={28} class="site-avatar" />
+          Colin McCloskey
+        </a>
         <nav>
           <a href="/about">About</a>
           <a href="/resume">Resume</a>
@@ -73,17 +79,28 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
 
   .header-inner {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     gap: 1rem;
   }
 
   .site-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
     color: var(--color-text);
     white-space: nowrap;
+  }
+
+  .site-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
   }
 
   nav {
