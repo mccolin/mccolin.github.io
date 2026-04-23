@@ -39,21 +39,29 @@ const bgUrls = Object.values(rawImages);
   const img = new Image();
   img.onload = () => {
     const canvas = document.createElement('canvas');
-    canvas.width = 50;
-    canvas.height = 50;
+    canvas.width = 100;
+    canvas.height = 100;
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, 50, 50);
-    const data = ctx.getImageData(0, 0, 50, 50).data;
-    let r = 0, g = 0, b = 0;
-    const pixels = data.length / 4;
+    ctx.drawImage(img, 0, 0, 100, 100);
+    const data = ctx.getImageData(0, 0, 100, 100).data;
+
+    // Build a histogram of quantized colors (bucket size 24 per channel)
+    const buckets = new Map();
     for (let i = 0; i < data.length; i += 4) {
-      r += data[i];
-      g += data[i + 1];
-      b += data[i + 2];
+      const r = Math.round(data[i] / 24) * 24;
+      const g = Math.round(data[i + 1] / 24) * 24;
+      const b = Math.round(data[i + 2] / 24) * 24;
+      const key = `${r},${g},${b}`;
+      buckets.set(key, (buckets.get(key) || 0) + 1);
     }
-    r = Math.round((r / pixels) * 0.22);
-    g = Math.round((g / pixels) * 0.22);
-    b = Math.round((b / pixels) * 0.22);
+
+    // Find the most frequent bucket
+    let max = 0, dominant = '12,10,8';
+    for (const [key, count] of buckets) {
+      if (count > max) { max = count; dominant = key; }
+    }
+
+    const [r, g, b] = dominant.split(',').map(v => Math.round(Number(v) * 0.22));
     document.documentElement.style.setProperty('--scrim-color', `rgba(${r},${g},${b},0.8)`);
   };
   img.src = url;
