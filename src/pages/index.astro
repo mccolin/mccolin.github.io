@@ -7,12 +7,18 @@ const rawImages = import.meta.glob<string>('../assets/bgphotos/*.jpg', {
   eager: true,
 });
 const bgUrls = Object.values(rawImages);
+
+const greetings = [
+  "👋 Hi. I'm Colin.",
+  // "👀 You've found Colin McCloskey.",
+  // "🍕 This is Colin McCloskey.",
+];
 ---
 
 <BaseLayout description="Personal site of Colin McCloskey." hideChrome={true}>
   <div class="scrim">
     <div class="page-wrap scrim-content">
-      <h1>👋 Hi. I'm Colin.</h1>
+      <h1>{greetings[Math.floor(Math.random() * greetings.length)]}</h1>
       <p>
         I'm a bearded, computery, nerd person based in Philadelphia, PA. I enjoy
         time with family and friends and love cheering on my favorite teams.

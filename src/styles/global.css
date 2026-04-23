@@ -3,9 +3,10 @@
   --color-bg: #f9f7f4;
   --color-text: #1a1a1a;
   --color-text-muted: #6b6b6b;
-  --color-accent: #c0392b;
+  --color-accent: #c0782b; /* #c0392b */
   --color-border: #d8d4ce;
   --color-code-bg: #eeeae4;
+  --color-header-bg: #ffffff;
 
   --font-sans: 'Lora', Georgia, 'Times New Roman', serif;
   --font-mono: 'Fira Mono', 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
