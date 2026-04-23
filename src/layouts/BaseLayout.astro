@@ -45,7 +45,7 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
     <header>
       <div class="page-wrap header-inner">
         <a href="/" class="site-name">
-          <Image src={avatar} alt="" width={28} height={28} class="site-avatar" />
+          <Image src={avatar} alt="" width={48} height={48} class="site-avatar" />
           Colin McCloskey
         </a>
         <nav>
@@ -63,6 +63,7 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
     <footer>
       <div class="page-wrap footer-inner">
         <nav class="footer-nav">
+          <a href="/">Home</a>
           <a href="/about">About</a>
           <a href="/resume">Resume</a>
           <a href="/blog">Blog</a>
@@ -103,8 +104,8 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
   }
 
   .site-avatar {
-    width: 28px;
-    height: 28px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
