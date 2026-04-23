@@ -14,8 +14,8 @@ const { entry, allEntries } = Astro.props;
 const { Content } = await render(entry);
 
 const sortedEntries = allEntries
-  .slice(1) // Exclude the current edition
   .sort((a, b) => b.data.year - a.data.year)
+  .slice(1) // Exclude the current edition
 ---
 
 <BaseLayout title={entry.data.title} description={`About Colin McCloskey, ${entry.data.year}.`}>
