@@ -1,33 +1,60 @@
 ---
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+let previousEditions = (await getCollection('about'))
+  .sort((a, b) => b.data.year - a.data.year);
+
+const currentEdition = previousEditions.splice(0, 1)[0];
+const { Content } = await render(currentEdition);
 ---
 
 <BaseLayout title="About" description="A bit about Colin McCloskey.">
   <div class="page-wrap">
-    <h1>About</h1>
+    <h1>About Colin</h1>
 
-    <p>
-      I'm Colin McCloskey — a software engineer based in the US. I've spent
-      most of my career building things on the web and thinking about how
-      software teams work (and don't).
-    </p>
+    <div class="about-body">
+      <Content />
+    </div>
 
-    <p>
-      I care a lot about craft: readable code, honest communication, and tools
-      that don't make you feel bad about yourself. I'm skeptical of complexity
-      by default and try to write software that a future version of me will
-      actually want to maintain.
-    </p>
-
-    <p>
-      Outside of work I read too much, cook a reasonable amount, and have
-      opinions about coffee that I try not to share unless asked.
-    </p>
-
-    <h2>Find me elsewhere</h2>
-    <ul>
-      <li><a href="https://github.com/mccolin">GitHub</a></li>
-      <li><a href="https://linkedin.com/in/mccolin">LinkedIn</a></li>
-    </ul>
+    {previousEditions.length > 0 && (
+      <section class="about-archive">
+        <h2>Previous editions of this page</h2>
+        <ul>
+          {previousEditions.map(entry => (
+            <li><a href={`/about/${entry.id}`}>{entry.data.year}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
   </div>
 </BaseLayout>
+
+<style>
+  .about-archive {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .about-archive h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .about-archive ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .about-archive a {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+</style>
