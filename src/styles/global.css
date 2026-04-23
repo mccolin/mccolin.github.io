@@ -10,7 +10,7 @@
   --font-sans: 'Lora', Georgia, 'Times New Roman', serif;
   --font-mono: 'Fira Mono', 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
 
-  --max-width: 680px;
+  --max-width: 720px;
   --spacing-page: clamp(1.25rem, 5vw, 2.5rem);
 }
 
