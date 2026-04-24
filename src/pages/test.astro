@@ -7,9 +7,9 @@ const images = Object.entries(bgMap)
   .sort((a, b) => a.basename.localeCompare(b.basename));
 ---
 
-<BaseLayout title="Test — Backgrounds" >
+<BaseLayout title="Test" >
   <div class="page-wrap">
-    <h1>Background Images</h1>
+    <h1>Backgrounds</h1>
     <p class="note">Click any image to preview it on the home page.</p>
     <ul class="grid">
       {images.map(({ basename, url }) => (
