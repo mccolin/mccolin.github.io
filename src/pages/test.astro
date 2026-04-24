@@ -1,16 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { bgMap } from '../lib/bgphotos';
 
-const rawImages = import.meta.glob<string>('../assets/bgphotos/*.jpg', {
-  query: '?url',
-  import: 'default',
-  eager: true,
-});
-
-const images = Object.entries(rawImages).map(([path, url]) => ({
-  basename: path.split('/').pop()!.replace(/\.[^.]+$/, ''),
-  url,
-})).sort((a, b) => a.basename.localeCompare(b.basename));
+const images = Object.entries(bgMap)
+  .map(([basename, url]) => ({ basename, url }))
+  .sort((a, b) => a.basename.localeCompare(b.basename));
 ---
 
 <BaseLayout title="Test — Backgrounds" >

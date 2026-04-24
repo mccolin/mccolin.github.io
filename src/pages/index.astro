@@ -1,17 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const rawImages = import.meta.glob<string>('../assets/bgphotos/*.jpg', {
-  query: '?url',
-  import: 'default',
-  eager: true,
-});
-
-const bgMap: Record<string, string> = {};
-for (const [path, url] of Object.entries(rawImages)) {
-  const basename = path.split('/').pop()!.replace(/\.[^.]+$/, '');
-  bgMap[basename] = url;
-}
+import { bgMap } from '../lib/bgphotos';
 
 const greetings = [
   "👋 Hi. I'm Colin.",
