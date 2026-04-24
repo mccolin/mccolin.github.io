@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const rawImages = import.meta.glob<string>('../assets/bgphotos/*.jpg', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+});
+
+const images = Object.entries(rawImages).map(([path, url]) => ({
+  basename: path.split('/').pop()!.replace(/\.[^.]+$/, ''),
+  url,
+})).sort((a, b) => a.basename.localeCompare(b.basename));
+---
+
+<BaseLayout title="Test — Backgrounds" >
+  <div class="page-wrap">
+    <h1>Background Images</h1>
+    <p class="note">Click any image to preview it on the home page.</p>
+    <ul class="grid">
+      {images.map(({ basename, url }) => (
+        <li>
+          <a href={`/?bg=${basename}`}>
+            <img src={url} alt={basename} />
+            <span>{basename}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .note {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .grid a {
+    display: block;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+  }
+
+  .grid img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    display: block;
+    margin-bottom: 0.4rem;
+    transition: opacity 0.15s;
+  }
+
+  .grid a:hover img {
+    opacity: 0.85;
+  }
+
+  .grid span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>

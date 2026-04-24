@@ -6,7 +6,12 @@ const rawImages = import.meta.glob<string>('../assets/bgphotos/*.jpg', {
   import: 'default',
   eager: true,
 });
-const bgUrls = Object.values(rawImages);
+
+const bgMap: Record<string, string> = {};
+for (const [path, url] of Object.entries(rawImages)) {
+  const basename = path.split('/').pop()!.replace(/\.[^.]+$/, '');
+  bgMap[basename] = url;
+}
 
 const greetings = [
   "👋 Hi. I'm Colin.",
@@ -37,8 +42,10 @@ const greetings = [
   </div>
 </BaseLayout>
 
-<script is:inline define:vars={{ bgUrls }}>
-  const url = bgUrls[Math.floor(Math.random() * bgUrls.length)];
+<script is:inline define:vars={{ bgMap }}>
+  const bgUrls = Object.values(bgMap);
+  const bgParam = new URLSearchParams(window.location.search).get('bg');
+  const url = (bgParam && bgMap[bgParam]) ? bgMap[bgParam] : bgUrls[Math.floor(Math.random() * bgUrls.length)];
   document.body.style.backgroundImage = `url('${url}')`;
   document.body.classList.add('has-bg-photo');
 
