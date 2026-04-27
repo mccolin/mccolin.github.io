@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { bgMap } from '../lib/bgphotos';
+import { getBgMap } from '../lib/bgphotos';
+const bgMap = await getBgMap();
 
 const greetings = [
   "👋 Hi. I'm Colin.",
