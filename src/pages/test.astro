@@ -1,27 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getBgMap } from '../lib/bgphotos';
-const bgMap = await getBgMap();
+import { getBgMap, getHiddenBgMap } from '../lib/bgphotos';
 
-const images = Object.entries(bgMap)
-  .map(([basename, url]) => ({ basename, url }))
-  .sort((a, b) => a.basename.localeCompare(b.basename));
+const toSorted = (map: Record<string, string>) =>
+  Object.entries(map)
+    .map(([basename, url]) => ({ basename, url }))
+    .sort((a, b) => a.basename.localeCompare(b.basename));
+
+const images = toSorted(await getBgMap());
+const hiddenImages = toSorted(await getHiddenBgMap());
 ---
 
 <BaseLayout title="Test" >
   <div class="page-wrap">
     <h1>Backgrounds</h1>
     <p class="note">Click any image to preview it on the home page.</p>
-    <ul class="grid">
-      {images.map(({ basename, url }) => (
-        <li>
-          <a href={`/?bg=${basename}`}>
-            <img src={url} alt={basename} />
-            <span>{basename}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
+
+    <section>
+      <h2>Standard</h2>
+      <ul class="grid">
+        {images.map(({ basename, url }) => (
+          <li>
+            <a href={`/?bg=${basename}`}>
+              <img src={url} alt={basename} />
+              <span>{basename}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Hidden</h2>
+      <ul class="grid">
+        {hiddenImages.map(({ basename, url }) => (
+          <li>
+            <a href={`/?bg=${basename}`}>
+              <img src={url} alt={basename} />
+              <span>{basename}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 </BaseLayout>
 
@@ -30,6 +51,21 @@ const images = Object.entries(bgMap)
     font-size: 0.9rem;
     color: var(--color-text-muted);
     margin-bottom: 1.5rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  section h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .grid {
