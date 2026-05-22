@@ -26,13 +26,28 @@ const sections: { label: string; items: ThingItem[] }[] = [
         title: 'WOSoMP',
         href: 'http://wosomp.com/',
         description: 'The Weekend Olympic Showdown of Massive Proportions.',
-        thumb: iconLink,
+        thumb: '/things/wosomp_champs.png',
+        cover: true,
+      },
+      {
+        title: 'Eastward Bound',
+        href: 'https://lizandcolin.tumblr.com/',
+        description: 'A tumblr! From when Liz and I packed up a moving truck and drove across the country in 2010.',
+        thumb: '/things/tumblr_photo.jpg',
+        cover: true,
       },
       {
         title: 'Happy Xmas 2007',
         href: '/things/xmas_2007/index.html',
         description: 'A holiday photo card from Christmas 2007.',
         thumb: '/things/xmas_2007/HappyXMas_files/IMG_4559.jpg',
+        cover: true,
+      },
+      {
+        title: 'Europe 2007',
+        href: 'https://www.flickr.com/photos/mccolin/collections/72157600321586434/',
+        description: "Photo sets from a backpacking trip with friends to Europe in 2007",
+        thumb: '/things/europe_group.jpg',
         cover: true,
       },
       {
@@ -116,7 +131,7 @@ const sections: { label: string; items: ThingItem[] }[] = [
       {
         title: 'Song Improvised About My Family',
         href: 'http://colinmccloskey.com/music/ClintAmbs_TheMcCloskeys.mp3',
-        description: 'Clint Ambs wrote this risqué song about my mom and dad on the spot at a party in 2001.',
+        description: 'This risqué song about my mom and dad performed on the spot at a party in 2001.',
         thumb: iconPhotoCity,
       },
     ],
@@ -138,7 +153,7 @@ const sections: { label: string; items: ThingItem[] }[] = [
         <ul class="grid">
           {items.map(({ title, href, description, thumb, cover }) => (
             <li>
-              <a href={href} rel="noopener noreferrer">
+              <a href={href} rel="noopener noreferrer" target="_blank">
                 <div class="thumb">
                   {thumb
                     ? <img src={thumb} alt={title} class={cover ? 'cover' : undefined} />
