@@ -1,20 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getBgMap, getAllBgMap } from '../lib/bgphotos';
+import { baseGreeting, siteGreetings } from '../lib/greetings';
 const bgMap = await getBgMap();
 const allBgMap = await getAllBgMap();
+const greetings = siteGreetings();
 
-const greetings = [
-  "👋 Hi. I'm Colin.",
-  // "👀 You've found Colin McCloskey.",
-  // "🍕 This is Colin McCloskey.",
-];
 ---
 
 <BaseLayout description="Personal site of Colin McCloskey." hideChrome={true}>
   <div class="scrim">
     <div class="page-wrap scrim-content">
-      <h1>{greetings[Math.floor(Math.random() * greetings.length)]}</h1>
+      <h1>{baseGreeting()}</h1>
       <p>
         I'm a bearded, computery, nerd person based in Philadelphia, PA. I enjoy
         time with family and friends and love cheering on my favorite teams.
@@ -65,10 +62,32 @@ const greetings = [
       if (count > max) { max = count; dominant = key; }
     }
 
-    const [r, g, b] = dominant.split(',').map(v => Math.round(Number(v) * 0.22));
+    // Darken the dominant color for the scrim
+    const [r, g, b] = dominant.split(',').map(v => Math.round(Number(v) * 0.4));
     document.documentElement.style.setProperty('--scrim-color', `rgba(${r},${g},${b},0.8)`);
+
+    const debugMode = new URLSearchParams(window.location.search).get('debug') === '1';
+    if (debugMode) {
+      console.log("Colin debug info:",{
+        'Background image:': url,
+        'Dominant color:': dominant,
+        'Scrim color:': `rgba(${r},${g},${b},0.9)`
+      });
+
+      document.querySelector('body').appendChild(canvas);
+      const colorBlock = document.createElement('div')
+      colorBlock.style = "position: fixed; top: 0; left: 100px; width: 100px; height: 100px; background-color: var(--scrim-color);";
+      document.querySelector('body').appendChild(colorBlock);
+    };
   };
   img.src = url;
+</script>
+
+<script is:inline define:vars={{ greetings }}>
+  // Replace the greeting on each visit for a bit of variety
+  const gParam = new URLSearchParams(window.location.search).get('g');
+  const greeting = gParam ? gParam : greetings[Math.floor(Math.random() * greetings.length)];
+  document.querySelector('h1').textContent = greeting;
 </script>
 
 <style is:global>
@@ -91,7 +110,7 @@ const greetings = [
     background: linear-gradient(
       to bottom,
       transparent 0,
-      var(--scrim-color, rgba(12, 10, 8, 0.96)) 6rem
+      var(--scrim-color, rgba(12, 10, 8, 0.96)) 8rem
     );
   }
 

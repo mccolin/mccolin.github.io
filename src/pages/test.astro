@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getBgMap, getHiddenBgMap } from '../lib/bgphotos';
+import { allGreetings } from '../lib/greetings';
 
 const toSorted = (map: Record<string, string>) =>
   Object.entries(map)
@@ -9,6 +10,7 @@ const toSorted = (map: Record<string, string>) =>
 
 const images = toSorted(await getBgMap());
 const hiddenImages = toSorted(await getHiddenBgMap());
+const greetings = allGreetings();
 ---
 
 <BaseLayout title="Test" >
@@ -43,10 +45,50 @@ const hiddenImages = toSorted(await getHiddenBgMap());
         ))}
       </ul>
     </section>
+
+    <h1>Greetings</h1>
+    <p class="note">Click any greeting to see it on the home page.</p>
+    <section>
+      <ul class="greetings-list">
+        {greetings.map((g) => (
+          <li><a href={`/?g=${g}`}>{g}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <h1>Debug</h1>
+    <p class="note">Load <a href="/?debug=1">the home page with debug</a> to see color, selection, background debug info.</p>
   </div>
 </BaseLayout>
 
 <style>
+  .greetings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .greetings-list li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1rem;
+  }
+
+  .greetings-list li:last-child {
+    border-bottom: none;
+  }
+
+  .greetings-list li a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  .greetings-list li a:hover {
+    background: var(--color-accent);
+    border-radius: 4px;
+    padding: 0.4rem;
+    text-decoration: none;
+  }
+
   .note {
     font-size: 0.9rem;
     color: var(--color-text-muted);
