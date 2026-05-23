@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import SocialLinks from '../components/SocialLinks.astro';
 import avatar from '../assets/profile/colin_emoji.png';
+import { randomEmoji } from '../lib/greetings';
 
 interface Props {
   title?: string;
@@ -74,6 +75,7 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
           </nav>
           <SocialLinks />
           <span class="footer-copy">&copy; {new Date().getFullYear()} Colin McCloskey</span>
+          {/* <span class="footer-emoji">{ randomEmoji(3).join(' ') }</span> */}
         </div>
       </footer>
     )}
@@ -171,5 +173,9 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
 
   .footer-copy {
     font-size: 0.8rem;
+  }
+
+  .footer-emoji {
+    font-size: 22pt;
   }
 </style>

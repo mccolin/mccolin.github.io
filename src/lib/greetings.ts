@@ -32,3 +32,13 @@ export function baseGreeting(): string {
 export function getGreeting(): string {
   return weightedGreetings[Math.floor(Math.random() * weightedGreetings.length)];
 }
+
+export function allEmoji(): string[] {
+  const segmenter = new Intl.Segmenter();
+  return greetings.map(g => [...segmenter.segment(g)][0].segment);
+}
+
+export function randomEmoji(amount: number = 1): string[] {
+  const emoji = allEmoji();
+  return emoji.sort(() => Math.random() - 0.5).slice(0, amount);
+}
