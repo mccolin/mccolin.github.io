@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getBgMap, getHiddenBgMap } from '../lib/bgphotos';
+import type { BgPhoto } from '../lib/bgphotos';
 import { allGreetings } from '../lib/greetings';
 
-const toSorted = (map: Record<string, string>) =>
+const toSorted = (map: Record<string, BgPhoto>) =>
   Object.entries(map)
-    .map(([basename, url]) => ({ basename, url }))
+    .map(([basename, photo]) => ({ basename, ...photo }))
     .sort((a, b) => a.basename.localeCompare(b.basename));
 
 const images = toSorted(await getBgMap());

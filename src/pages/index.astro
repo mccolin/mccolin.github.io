@@ -31,10 +31,12 @@ const greetings = siteGreetings();
 </BaseLayout>
 
 <script is:inline define:vars={{ bgMap, allBgMap }}>
-  const bgUrls = Object.values(bgMap);
+  const bgPhotos = Object.values(bgMap);
   const bgParam = new URLSearchParams(window.location.search).get('bg');
-  const url = (bgParam && allBgMap[bgParam]) ? allBgMap[bgParam] : bgUrls[Math.floor(Math.random() * bgUrls.length)];
+  const selected = (bgParam && allBgMap[bgParam]) ? allBgMap[bgParam] : bgPhotos[Math.floor(Math.random() * bgPhotos.length)];
+  const url = selected.url;
   document.body.style.backgroundImage = `url('${url}')`;
+  if (selected.position) document.body.style.backgroundPosition = selected.position;
   document.body.classList.add('has-bg-photo');
 
   const img = new Image();
