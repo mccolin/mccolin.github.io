@@ -13,7 +13,7 @@ const greetings = [
 
 const weightedGreetings = [
   ...Array(3).fill(greetings[0]),
-  ...Array(3).fill(greetings[1]),
+  ...Array(2).fill(greetings[1]),
   ...greetings.slice(2),
 ];
 

@@ -11,6 +11,7 @@ const positionOverrides: Record<string, string> = {
   'bg_colin_plaid': 'left center',
   'bg_phillies': 'left center',
   'bg_mountain_coaster': '80% center',
+  'bg_eggs_with_dad': 'left center',
 };
 
 const rawPublic = import.meta.glob<{ default: ImageMetadata }>('../assets/bgphotos/*.jpg', {
