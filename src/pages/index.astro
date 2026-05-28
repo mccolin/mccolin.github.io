@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getBgMap, getAllBgMap } from '../lib/bgphotos';
 import { baseGreeting, siteGreetings } from '../lib/greetings';
+import { SHOW_NOTES } from "astro:env/server";
 const bgMap = await getBgMap();
 const allBgMap = await getAllBgMap();
 const greetings = siteGreetings();
-
 ---
 
 <BaseLayout description="Personal site of Colin McCloskey." hideChrome={true}>
@@ -17,14 +17,19 @@ const greetings = siteGreetings();
         time with family and friends and love cheering on my favorite teams.
       </p>
       <p>
-        Here you can learn <a href="/about">more about me</a> or take a look through
-        my <a href="/resume">resume</a>. {/* or read a few semi-organized 
-        <a href="/blog">thoughts</a> I've shared. */}
+        { SHOW_NOTES ? (
+          <span>Here you can <a href="/about">learn more about me</a>, take a peek at <a href="/resume">my resume</a>,
+          or <a href="/notes">read a few notes</a> I've shared.</span>
+        ) : (
+          <span>Here you can <a href="/about">learn more about me</a> or take a look through
+          <a href="/resume">my resume</a>.</span>
+        ) }
+        
       </p>
       <nav>
         <a href="/about">About</a>
         <a href="/resume">Resume</a>
-        {/* <a href="/blog">Blog</a> */}
+        { SHOW_NOTES ? <a href="/notes">Notes</a> : null }
       </nav>
     </div>
   </div>

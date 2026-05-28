@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getBgMap, getHiddenBgMap } from '../lib/bgphotos';
 import type { BgPhoto } from '../lib/bgphotos';
 import { allGreetings } from '../lib/greetings';
+import { SHOW_NOTES } from "astro:env/server";
 
 const toSorted = (map: Record<string, BgPhoto>) =>
   Object.entries(map)
@@ -59,6 +60,27 @@ const greetings = allGreetings();
 
     <h1>Debug</h1>
     <p class="note">Load <a href="/?debug=1">the home page with debug</a> to see color, selection, background debug info.</p>
+    <section></section>
+
+    <h1>Notes (Blog)</h1>
+      { SHOW_NOTES ? (
+        <p class="note">
+          The Notes section is
+          <a href="/notes">open to navigate</a>
+          in this build.
+        </p>
+      ) : (
+        <p class="note">
+          The Notes section is <strong>hidden from navigation</strong> in this build.
+          <a href="/notes">Visit anyway</a>.
+        </p>
+      ) }
+    <section></section>
+
+    <section>
+      <p class="note">Site built {`${new Date().toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' })}`}.</p>
+    </section>
+
   </div>
 </BaseLayout>
 

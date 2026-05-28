@@ -2,7 +2,7 @@
 title: "Hello, world"
 description: "Getting this site off the ground."
 pubDate: 2026-04-22
-draft: false
+draft: true
 tags: ["meta"]
 ---
 

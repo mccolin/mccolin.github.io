@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import SocialLinks from '../components/SocialLinks.astro';
 import avatar from '../assets/profile/colin_emoji.png';
+import { SHOW_NOTES } from "astro:env/server";
 import { randomEmoji } from '../lib/greetings';
 
 interface Props {
@@ -54,7 +55,7 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
           <nav>
             <a href="/about">About</a>
             <a href="/resume">Resume</a>
-            {/* <a href="/blog">Blog</a> */}
+            { SHOW_NOTES ? <a href="/notes">Notes</a> : null }
           </nav>
         </div>
       </header>
@@ -71,11 +72,10 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
             <a href="/">Home</a>
             <a href="/about">About</a>
             <a href="/resume">Resume</a>
-            {/* <a href="/blog">Blog</a> */}
+            { SHOW_NOTES ? <a href="/notes">Notes</a> : null }
           </nav>
-          <SocialLinks />
           <span class="footer-copy">&copy; {new Date().getFullYear()} Colin McCloskey</span>
-          {/* <span class="footer-emoji">{ randomEmoji(3).join(' ') }</span> */}
+          <span class="footer-emoji" title={`Built ${new Date().toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' })}`}>{ randomEmoji(3).join(' ') }</span>
         </div>
       </footer>
     )}
