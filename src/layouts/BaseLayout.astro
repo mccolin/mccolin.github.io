@@ -75,7 +75,7 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
             { SHOW_NOTES ? <a href="/notes">Notes</a> : null }
           </nav>
           <span class="footer-copy">&copy; {new Date().getFullYear()} Colin McCloskey</span>
-          <span class="footer-emoji" title={`Built ${new Date().toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' })}`}>{ randomEmoji(3).join(' ') }</span>
+          <span class="footer-emoji" title={`Built ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'long', timeStyle: 'short' })}, Philadelphia local time`}>{ randomEmoji(3).join(' ') }</span>
         </div>
       </footer>
     )}

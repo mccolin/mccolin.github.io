@@ -78,7 +78,7 @@ const greetings = allGreetings();
     <section></section>
 
     <section>
-      <p class="note">Site built {`${new Date().toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' })}`}.</p>
+      <p class="note">Site built {new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'long', timeStyle: 'short' })}, Philadelphia local time.</p>
     </section>
 
   </div>
