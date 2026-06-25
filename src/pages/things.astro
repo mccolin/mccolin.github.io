@@ -16,8 +16,15 @@ const sections: { label: string; items: ThingItem[] }[] = [
     label: 'Links & Projects',
     items: [
       {
+        title: 'Knoebels Trip Planner',
+        href: 'https://mccolin.com/knoebels-planner/',
+        description: 'I built a really cool planner and price checker for a trip to Knoebels Amusement Park in 2026, experimenting with AI building',
+        thumb: '/things/knoebels_100.png',
+        cover: false,
+      },
+      {
         title: 'liz&colin',
-        href: 'http://lizandcolin.us/',
+        href: 'https://lizandcolin.us/',
         description: 'Our wedding website, 4/2/2011',
         thumb: '/things/lizandcolin.jpg',
         cover: true,
@@ -143,8 +150,8 @@ const sections: { label: string; items: ThingItem[] }[] = [
   <div class="page-wrap">
     <h1>Things</h1>
     <p class="intro">
-      You've found the secret stash! Here's a collection of random things I just can't
-      seem to get rid of and keep porting around whenever I redo my site.
+      You've found the secret stash! Here's a collection of things I just can't seem
+      to get rid of and keep porting around whenever I redo my site.
     </p>
 
     {sections.map(({ label, items }) => (
@@ -161,7 +168,7 @@ const sections: { label: string; items: ThingItem[] }[] = [
                   }
                 </div>
                 <strong>{title}</strong>
-                {description && <span class="desc">{description}</span>}
+                {description && <span class="desc" title={description}>{description}</span>}
               </a>
             </li>
           ))}
