@@ -1,0 +1,100 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+  side?: 'left' | 'right';
+  inline?: boolean;
+}
+
+const { src, alt, caption, side = 'right', inline = false } = Astro.props;
+---
+
+<figure
+  class:list={['figure', !inline && `figure--${side}`]}
+  tabindex={!inline ? 0 : undefined}
+  role={!inline ? 'button' : undefined}
+  aria-pressed={!inline ? 'false' : undefined}
+>
+  <Image src={src} alt={alt} class="figure-img" />
+  {caption && <figcaption class="figure-caption">{caption}</figcaption>}
+</figure>
+
+<script>
+  document.querySelectorAll('.figure--left, .figure--right').forEach((figure) => {
+    const toggle = () => {
+      const toggled = figure.classList.toggle('figure--toggled');
+      figure.setAttribute('aria-pressed', String(toggled));
+    };
+    figure.addEventListener('click', toggle);
+    figure.addEventListener('keydown', (event) => {
+      if (event instanceof KeyboardEvent && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        toggle();
+      }
+    });
+  });
+</script>
+
+<style>
+  .figure {
+    --figure-width: 260px;
+    --figure-gap: 0rem;
+    margin-block: 1.5rem;
+    padding: 0.5rem;
+    background: var(--color-header-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .figure-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+  }
+
+  .figure-caption {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  @media (min-width: 1280px) {
+    .figure--right,
+    .figure--left {
+      cursor: pointer;
+      transition: width 0.3s ease, margin 0.3s ease, transform 0.3s ease;
+    }
+
+    .figure--right {
+      float: right;
+      width: var(--figure-width);
+      margin-left: var(--figure-gap);
+      margin-right: calc(-1 * (var(--spacing-page) + var(--figure-gap) + var(--figure-width)));
+      transform: translateY(-50%);
+    }
+
+    .figure--left {
+      float: left;
+      width: var(--figure-width);
+      margin-right: var(--figure-gap);
+      margin-left: calc(-1 * (var(--spacing-page) + var(--figure-gap) + var(--figure-width)));
+      transform: translateY(-50%);
+    }
+
+    .figure--right.figure--toggled,
+    .figure--left.figure--toggled {
+      width: 100%;
+      margin: 0;
+      transform: translateY(0);
+    }
+  }
+</style>

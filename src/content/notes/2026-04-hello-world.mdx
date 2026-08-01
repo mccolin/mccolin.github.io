@@ -1,0 +1,17 @@
+---
+title: "Hello, world"
+description: "Getting this site off the ground."
+pubDate: 2026-04-22
+draft: true
+tags: ["meta"]
+image: ../../assets/profile/colin_pineapple.jpg
+---
+
+import Figure from '../../components/Figure.astro';
+import pineapple from '../../assets/profile/colin_pineapple.jpg';
+
+This is the first post. It's marked as a draft so it won't appear in production until you're ready to publish it.
+
+<Figure src={pineapple} alt="Colin holding a pineapple." caption="A completely unrelated pineapple, here to demonstrate the Figure component." side="right" />
+
+Remove `draft: true` from the frontmatter when you want it to go live.

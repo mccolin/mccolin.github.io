@@ -80,6 +80,12 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
     margin-top: 2rem;
   }
 
+  .post-body::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
   .post-nav {
     margin-top: 3rem;
     padding-top: 1.5rem;
