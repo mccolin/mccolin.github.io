@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { getImage } from 'astro:assets';
 import PostLayout from '../../layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
@@ -15,11 +16,16 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const ogImage = post.data.image
+  ? (await getImage({ src: post.data.image, width: 1200, format: 'jpeg' })).src
+  : undefined;
 ---
 
 <PostLayout
   title={post.data.title}
   description={post.data.description}
+  image={ogImage}
   pubDate={post.data.pubDate}
   tags={post.data.tags}
 >

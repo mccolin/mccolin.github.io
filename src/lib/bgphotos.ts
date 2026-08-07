@@ -61,3 +61,21 @@ export async function getAllBgMap(): Promise<Record<string, BgPhoto>> {
   ]);
   return { ...pub, ...hidden };
 }
+
+// A single, deliberately landscape-oriented photo sized as an og:image
+// thumbnail for the homepage (some bg photos are portrait and would crop
+// awkwardly as a link preview).
+const OG_IMAGE_BASENAME = 'bg_colin_cows';
+
+export async function getOgImage(): Promise<string> {
+  const entry = Object.entries(rawPublic).find(([path]) => path.includes(OG_IMAGE_BASENAME));
+  if (!entry) throw new Error(`OG image source "${OG_IMAGE_BASENAME}" not found in bgphotos`);
+  const src = entry[1].default;
+  const optimized = await getImage({
+    src,
+    width: Math.min(src.width, 1200),
+    format: 'jpeg',
+    quality: 85,
+  });
+  return optimized.src;
+}

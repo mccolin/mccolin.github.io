@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import SocialLinks from '../components/SocialLinks.astro';
 import avatar from '../assets/profile/colin_emoji.png';
 import { SHOW_NOTES } from "astro:env/server";
@@ -8,12 +8,20 @@ import { randomEmoji } from '../lib/greetings';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: 'website' | 'article';
   hideChrome?: boolean;
 }
 
-const { title, description, hideChrome = false } = Astro.props;
+const { title, description, image, type = 'website', hideChrome = false } = Astro.props;
 const siteTitle = 'Colin McCloskey';
 const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
+const pageDescription = description ?? 'Personal site of Colin McCloskey. Bearded, computery, nerd person.';
+
+const fallbackOgImage = await getImage({ src: avatar, width: 512, height: 512, format: 'jpeg' });
+const ogImagePath = image ?? fallbackOgImage.src;
+const ogImageUrl = new URL(ogImagePath, Astro.site).href;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -29,7 +37,13 @@ const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={pageDescription} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:url" content={pageUrl} />
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"

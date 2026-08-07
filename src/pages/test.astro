@@ -1,9 +1,11 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getBgMap, getHiddenBgMap } from '../lib/bgphotos';
 import type { BgPhoto } from '../lib/bgphotos';
 import { allGreetings } from '../lib/greetings';
 import { SHOW_NOTES } from "astro:env/server";
+import LinkPreview from '../components/LinkPreview.astro';
 
 const toSorted = (map: Record<string, BgPhoto>) =>
   Object.entries(map)
@@ -13,6 +15,10 @@ const toSorted = (map: Record<string, BgPhoto>) =>
 const images = toSorted(await getBgMap());
 const hiddenImages = toSorted(await getHiddenBgMap());
 const greetings = allGreetings();
+
+const allNotes = await getCollection('notes');
+const totalNotesCount = allNotes.length;
+const draftNotesCount = allNotes.filter((note) => note.data.draft).length;
 ---
 
 <BaseLayout title="Test" >
@@ -75,8 +81,20 @@ const greetings = allGreetings();
           <a href="/notes">Visit anyway</a>.
         </p>
       ) }
+      <p class="note">
+        There are {totalNotesCount} total notes, {draftNotesCount} of which are drafts, in this build.
+      </p>
     <section></section>
 
+    <h1>Link Preview</h1>
+    <p class="note">Scratch checks for the LinkPreview component: full OG preview, no-image fallback, and unreachable-URL fallback.</p>
+    <section>
+      <LinkPreview href="https://mccolin.com" />
+      <LinkPreview href="https://mccolin.com/resume" />
+    </section>
+    <section></section>
+
+    <h1>Build</h1>
     <section>
       <p class="note">Site built {new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'long', timeStyle: 'short' })}, Philadelphia local time.</p>
     </section>

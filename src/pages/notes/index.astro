@@ -13,7 +13,7 @@ const posts = allPosts.sort(
 );
 ---
 
-<BaseLayout title="Notes" description="Writing by Colin McCloskey.">
+<BaseLayout title="Notes" description="Collected writings, scribbles, and ramblings by Colin McCloskey. Sometimes software career, sometimes sports, sometimes other things entirely.">
   <div class="page-wrap">
 
     { SHOW_NOTES ? null : (
@@ -21,6 +21,12 @@ const posts = allPosts.sort(
     ) }
 
     <h1>Notes</h1>
+
+    <section class="notes-section">
+      <p>
+        <em>Collected writings, scribbles, and ramblings. Sometimes software career, sometimes sports, sometimes other things entirely.</em>
+      </p>
+    </section>
 
     {posts.length === 0 ? (
       <p class="empty">No published notes are ready for you to read. Check back in the future.</p>
@@ -58,6 +64,20 @@ const posts = allPosts.sort(
 <style>
   h1 {
     margin-bottom: 2rem;
+  }
+
+  .notes-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .notes-section h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.25rem;
   }
 
   .empty {

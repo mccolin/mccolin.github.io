@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getBgMap, getAllBgMap } from '../lib/bgphotos';
+import { getBgMap, getAllBgMap, getOgImage } from '../lib/bgphotos';
 import { baseGreeting, siteGreetings } from '../lib/greetings';
 import { SHOW_NOTES } from "astro:env/server";
 const bgMap = await getBgMap();
 const allBgMap = await getAllBgMap();
 const greetings = siteGreetings();
+const ogImage = await getOgImage();
 ---
 
-<BaseLayout description="Personal site of Colin McCloskey." hideChrome={true}>
+<BaseLayout description="Personal site of Colin McCloskey. Bearded, computery, nerd person. Husband. Father. Philadelphian. Software maker and team leader." image={ogImage} hideChrome={true}>
   <div class="scrim">
     <div class="page-wrap scrim-content">
       <h1>{baseGreeting()}</h1>

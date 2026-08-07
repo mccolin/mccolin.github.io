@@ -1,0 +1,49 @@
+{
+  "https://github.com/mccolin": {
+    "url": "https://github.com/mccolin",
+    "title": "mccolin - Overview",
+    "description": "Bearded computery nerd person. mccolin has 35 repositories available. Follow their code on GitHub.",
+    "image": "https://avatars.githubusercontent.com/u/78539?v=4?s=400",
+    "siteName": "GitHub",
+    "hostname": "github.com",
+    "fetchedAt": "2026-08-07T18:57:07.865Z",
+    "ok": true
+  },
+  "https://mccolin.com": {
+    "url": "https://mccolin.com",
+    "title": "Colin McCloskey",
+    "description": "Personal site of Colin McCloskey.",
+    "siteName": "mccolin.com",
+    "hostname": "mccolin.com",
+    "fetchedAt": "2026-08-07T18:57:07.748Z",
+    "ok": true
+  },
+  "https://mccolin.com/resume": {
+    "url": "https://mccolin.com/resume",
+    "title": "Resume — Colin McCloskey",
+    "description": "Professional history of Colin McCloskey.",
+    "siteName": "mccolin.com",
+    "hostname": "mccolin.com",
+    "fetchedAt": "2026-08-07T19:24:59.131Z",
+    "ok": true
+  },
+  "https://notashelf.dev/posts/taste-is-all-thats-left": {
+    "url": "https://notashelf.dev/posts/taste-is-all-thats-left",
+    "title": "Taste Is All That's Left | Blog",
+    "description": "On what is left to do once the machine can make anything, and why taste is the last craft worth keeping.",
+    "siteName": "NotAShelf",
+    "hostname": "notashelf.dev",
+    "fetchedAt": "2026-08-07T19:28:51.317Z",
+    "ok": true
+  },
+  "https://phillies.com": {
+    "url": "https://phillies.com",
+    "title": "Official Philadelphia Phillies Website | MLB.com",
+    "description": "The official website of the Philadelphia Phillies with the most up-to-date information on news, tickets, schedule, stadium, roster, rumors, scores, and stats.",
+    "image": "https://www.mlbstatic.com/team-logos/share/143.jpg",
+    "siteName": "MLB.com",
+    "hostname": "phillies.com",
+    "fetchedAt": "2026-08-07T19:28:51.076Z",
+    "ok": true
+  }
+}

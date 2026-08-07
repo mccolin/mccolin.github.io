@@ -1,0 +1,169 @@
+---
+import { getLinkPreview } from '../lib/linkPreview';
+
+interface Props {
+  href: string;
+  caption?: string;
+  title?: string;
+  description?: string;
+}
+
+const {
+  href,
+  caption,
+  title: titleOverride,
+  description: descriptionOverride,
+} = Astro.props;
+
+const preview = await getLinkPreview(href);
+const title = titleOverride ?? preview.title;
+const description = descriptionOverride ?? preview.description;
+---
+
+<figure class="link-preview">
+  <a
+    class="link-preview-anchor"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`${title} — ${preview.hostname} (opens in a new tab)`}
+  >
+    {preview.image && (
+      <span class="link-preview-image-wrap">
+        <img
+          class="link-preview-image"
+          src={preview.image}
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </span>
+    )}
+    <span class="link-preview-body">
+      <span class="link-preview-title">{title}</span>
+      {description && <span class="link-preview-description">{description}</span>}
+      <span class="link-preview-site">{preview.siteName}</span>
+    </span>
+  </a>
+  {caption && <figcaption class="figure-caption">{caption}</figcaption>}
+</figure>
+
+<script>
+  document.querySelectorAll('.link-preview-image').forEach((img) => {
+    if (!(img instanceof HTMLImageElement)) return;
+    const wrap = img.closest('.link-preview-image-wrap');
+    if (!wrap) return;
+    const markLoaded = () => wrap.setAttribute('data-loaded', 'true');
+    const markError = () => wrap.setAttribute('data-loaded', 'error');
+    if (img.complete && img.naturalWidth > 0) {
+      markLoaded();
+    } else {
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', markError, { once: true });
+    }
+  });
+</script>
+
+<style>
+  .link-preview {
+    margin-block: 1.5rem;
+    padding: 0.5rem;
+    background: var(--color-header-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .link-preview-anchor {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .link-preview-image-wrap {
+    display: block;
+    aspect-ratio: 1.91 / 1;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--color-header-bg);
+    background-image: linear-gradient(
+      100deg,
+      var(--color-header-bg) 30%,
+      var(--color-border) 50%,
+      var(--color-header-bg) 70%
+    );
+    background-size: 200% 100%;
+    animation: link-preview-shimmer 1.5s ease-in-out infinite;
+  }
+
+  .link-preview-image-wrap[data-loaded='true'] {
+    animation: none;
+    background: none;
+  }
+
+  .link-preview-image-wrap[data-loaded='error'] {
+    display: none;
+  }
+
+  .link-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .link-preview-image-wrap[data-loaded='true'] .link-preview-image {
+    opacity: 1;
+  }
+
+  @keyframes link-preview-shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .link-preview-body {
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .link-preview-title {
+    display: block;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .link-preview-description {
+    display: -webkit-box;
+    margin-top: 0.25rem;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .link-preview-site {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .figure-caption {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-style: italic;
+    line-height: 1.4;
+  }
+</style>

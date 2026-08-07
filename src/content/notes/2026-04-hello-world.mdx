@@ -9,9 +9,15 @@ image: ../../assets/profile/colin_pineapple.jpg
 
 import Figure from '../../components/Figure.astro';
 import pineapple from '../../assets/profile/colin_pineapple.jpg';
+import LinkPreview from '../../components/LinkPreview.astro';
 
 This is the first post. It's marked as a draft so it won't appear in production until you're ready to publish it.
 
 <Figure src={pineapple} alt="Colin holding a pineapple." caption="A completely unrelated pineapple, here to demonstrate the Figure component." side="right" />
 
 Remove `draft: true` from the frontmatter when you want it to go live.
+
+<LinkPreview href="https://notashelf.dev/posts/taste-is-all-thats-left" />
+
+<LinkPreview href="https://phillies.com" />
+
