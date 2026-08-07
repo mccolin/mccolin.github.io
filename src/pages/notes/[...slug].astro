@@ -8,13 +8,19 @@ export async function getStaticPaths() {
     return import.meta.env.PROD ? !data.draft : true;
   });
 
-  return posts.map(post => ({
+  const sorted = posts.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+  return sorted.map((post, index) => ({
     params: { slug: post.id },
-    props: { post },
+    props: {
+      post,
+      prevPost: sorted[index - 1],
+      nextPost: sorted[index + 1],
+    },
   }));
 }
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await render(post);
 
 const ogImage = post.data.image
@@ -28,6 +34,8 @@ const ogImage = post.data.image
   image={ogImage}
   pubDate={post.data.pubDate}
   tags={post.data.tags}
+  prevPost={prevPost ? { slug: prevPost.id, title: prevPost.data.title } : undefined}
+  nextPost={nextPost ? { slug: nextPost.id, title: nextPost.data.title } : undefined}
 >
   <Content />
 </PostLayout>

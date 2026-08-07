@@ -1,15 +1,22 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
+interface AdjacentPost {
+  slug: string;
+  title: string;
+}
+
 interface Props {
   title: string;
   description?: string;
   image?: string;
   pubDate: Date;
   tags?: string[];
+  prevPost?: AdjacentPost;
+  nextPost?: AdjacentPost;
 }
 
-const { title, description, image, pubDate, tags } = Astro.props;
+const { title, description, image, pubDate, tags, prevPost, nextPost } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -37,7 +44,27 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       </div>
     </article>
     <nav class="post-nav">
-      <a href="/notes">&larr; All notes</a>
+      {(prevPost || nextPost) && (
+        <div class="post-nav-adjacent">
+          <div class="post-nav-prev">
+            {prevPost && (
+              <a href={`/notes/${prevPost.slug}`}>
+                <span class="post-nav-label">&larr; Previous</span>
+                <span class="post-nav-title">{prevPost.title}</span>
+              </a>
+            )}
+          </div>
+          <div class="post-nav-next">
+            {nextPost && (
+              <a href={`/notes/${nextPost.slug}`}>
+                <span class="post-nav-label">Next &rarr;</span>
+                <span class="post-nav-title">{nextPost.title}</span>
+              </a>
+            )}
+          </div>
+        </div>
+      )}
+      <a href="/notes" class="post-nav-all">All notes</a>
     </nav>
   </div>
 </BaseLayout>
@@ -115,5 +142,42 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 
   .post-nav a:hover {
     color: var(--color-text);
+  }
+
+  .post-nav-adjacent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .post-nav-prev {
+    text-align: left;
+  }
+
+  .post-nav-next {
+    text-align: right;
+  }
+
+  .post-nav-prev a,
+  .post-nav-next a {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .post-nav-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
+  .post-nav-all {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
   }
 </style>
