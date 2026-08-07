@@ -1,14 +1,4 @@
 {
-  "https://github.com/mccolin": {
-    "url": "https://github.com/mccolin",
-    "title": "mccolin - Overview",
-    "description": "Bearded computery nerd person. mccolin has 35 repositories available. Follow their code on GitHub.",
-    "image": "https://avatars.githubusercontent.com/u/78539?v=4?s=400",
-    "siteName": "GitHub",
-    "hostname": "github.com",
-    "fetchedAt": "2026-08-07T18:57:07.865Z",
-    "ok": true
-  },
   "https://mccolin.com": {
     "url": "https://mccolin.com",
     "title": "Colin McCloskey",

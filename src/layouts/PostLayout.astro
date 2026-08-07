@@ -81,6 +81,20 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
     margin-top: 2rem;
   }
 
+  .post-body :global(.highlight) {
+    font-size: 1.35rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+    margin-block: 1.75rem;
+  }
+
+  @media (min-width: 1280px) {
+    .post-body :global(.highlight) {
+      margin-inline: -2.5rem;
+    }
+  }
+
   .post-body::after {
     content: '';
     display: table;
