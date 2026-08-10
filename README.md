@@ -117,10 +117,13 @@ Fetched OG data is cached here, keyed by URL, and **committed to the repo**
 so builds don't refetch every link on every push.
 
 - On first use of a `href`, `src/lib/linkPreview.ts` fetches the page,
-  parses its OG/meta tags, and writes the result into this file.
+  parses its OG/meta tags, and writes the result into this file, including
+  an `embeddedIn` array listing which repo-relative file(s) currently embed
+  that URL via `<LinkPreview href="...">`.
 - Subsequent builds reuse the cached entry — no network call, no automatic
-  expiry. **To force a refresh** (the target page's title/image changed),
-  delete that URL's entry from the file and rebuild.
+  expiry of title/description/image. `embeddedIn` itself is kept fresh on
+  every build regardless (cheap — it's just a directory scan), so it always
+  reflects reality even without a full refetch.
 - If a fetch fails, times out, or a site has no OG tags, the cache stores a
   degraded-but-valid fallback (hostname-only title, no image) instead of
   failing the build.
@@ -128,6 +131,18 @@ so builds don't refetch every link on every push.
   `.astro`/`.md`/`.mdx` files under `src/` for `<LinkPreview href="...">`
   usages and drops any cached URL no longer referenced anywhere in the site
   content.
+- **To force a refresh** of one entry (the target page's title/image
+  changed), delete that URL's entry from the file and rebuild. **To refresh
+  everything at once**, run:
+
+  ```sh
+  npm run rebuild-link-previews
+  ```
+
+  This re-scans `src/` for every `<LinkPreview href="...">` usage,
+  force-refetches OG data for each (ignoring the existing cache), and
+  overwrites `link-previews.json` with the fresh results — printing a ✓/✗
+  per URL as it goes.
 - **Recommended workflow:** add or edit a `LinkPreview` locally, run
   `npm run dev` (or `npm run build`) once to populate the cache, then commit
   the updated `link-previews.json` alongside the content change. Skipping

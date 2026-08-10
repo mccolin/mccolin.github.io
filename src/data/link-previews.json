@@ -2,20 +2,28 @@
   "https://mccolin.com": {
     "url": "https://mccolin.com",
     "title": "Colin McCloskey",
-    "description": "Personal site of Colin McCloskey.",
-    "siteName": "mccolin.com",
+    "description": "Personal site of Colin McCloskey. Bearded, computery, nerd person. Husband. Father. Philadelphian. Software maker and team leader.",
+    "image": "https://mccolin.com/_astro/bg_colin_cows.VvQnf0Ps_Z2p5Acb.jpeg",
+    "siteName": "Colin McCloskey",
     "hostname": "mccolin.com",
-    "fetchedAt": "2026-08-07T18:57:07.748Z",
-    "ok": true
+    "fetchedAt": "2026-08-10T17:01:25.020Z",
+    "ok": true,
+    "embeddedIn": [
+      "src/pages/test.astro"
+    ]
   },
   "https://mccolin.com/resume": {
     "url": "https://mccolin.com/resume",
     "title": "Resume — Colin McCloskey",
-    "description": "Professional history of Colin McCloskey.",
-    "siteName": "mccolin.com",
+    "description": "Professional history of Colin McCloskey. Hands-on, people-driven technology leader with a talent-building focus and experience at multiple scales.",
+    "image": "https://mccolin.com/_astro/colin_emoji.CHOxwHKm_Z1mcuQF.jpeg",
+    "siteName": "Colin McCloskey",
     "hostname": "mccolin.com",
-    "fetchedAt": "2026-08-07T19:24:59.131Z",
-    "ok": true
+    "fetchedAt": "2026-08-10T17:01:25.085Z",
+    "ok": true,
+    "embeddedIn": [
+      "src/pages/test.astro"
+    ]
   },
   "https://notashelf.dev/posts/taste-is-all-thats-left": {
     "url": "https://notashelf.dev/posts/taste-is-all-thats-left",
@@ -23,8 +31,11 @@
     "description": "On what is left to do once the machine can make anything, and why taste is the last craft worth keeping.",
     "siteName": "NotAShelf",
     "hostname": "notashelf.dev",
-    "fetchedAt": "2026-08-07T19:28:51.317Z",
-    "ok": true
+    "fetchedAt": "2026-08-10T17:01:25.594Z",
+    "ok": true,
+    "embeddedIn": [
+      "src/content/notes/2026-04-hello-world.mdx"
+    ]
   },
   "https://phillies.com": {
     "url": "https://phillies.com",
@@ -33,7 +44,10 @@
     "image": "https://www.mlbstatic.com/team-logos/share/143.jpg",
     "siteName": "MLB.com",
     "hostname": "phillies.com",
-    "fetchedAt": "2026-08-07T19:28:51.076Z",
-    "ok": true
+    "fetchedAt": "2026-08-10T17:01:25.141Z",
+    "ok": true,
+    "embeddedIn": [
+      "src/content/notes/2026-04-hello-world.mdx"
+    ]
   }
 }
